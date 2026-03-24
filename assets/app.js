@@ -205,6 +205,7 @@ function renderGallery(product){
 function renderProductList(){
   const host = qs("#productList");
   if(!host) return;
+  console.log("Rendering product list", STORE.products);
   host.innerHTML = "";
   STORE.products.forEach((product) => {
     const card = document.createElement("article");
@@ -214,7 +215,6 @@ function renderProductList(){
     const disabled = product.stock <= 0 ? "disabled" : "";
     const cover = product.images?.[0] || "";
     card.innerHTML = `
-      <img class="product-cover" src="${cover}" alt="${product.shortName}" />
       <h3>${product.shortName}</h3>
       <p>${product.description}</p>
       <div class="pricebox" style="margin-top:8px">
@@ -420,7 +420,6 @@ function initAdmin(){
           const item = document.createElement("article");
           item.className = "card white product-card";
           item.innerHTML = `
-            <img class="product-cover" src="${p.images?.[0] || ""}" alt="${p.shortName}" />
             <h3>${p.shortName}</h3>
             <p>ID: <code>${p.id}</code></p>
             <p>Prix: ${formatMAD(p.priceMAD)} | Stock: ${p.stock}</p>
