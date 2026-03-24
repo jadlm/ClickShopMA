@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f4f7fb"/>
+  <rect x="320" y="180" width="560" height="420" rx="30" fill="#fff" stroke="#dbe3ef" stroke-width="4"/>
+  <rect x="380" y="260" width="440" height="220" rx="16" fill="#f9fafb"/>
+  <circle cx="600" cy="370" r="58" fill="#25D366"/>
+  <text x="600" y="140" text-anchor="middle" font-size="54" font-family="Arial, sans-serif" fill="#0b1220" font-weight="700">Vue Lifestyle</text>
+  <text x="600" y="700" text-anchor="middle" font-size="34" font-family="Arial, sans-serif" fill="#5b6475">Remplace par une photo reel du produit</text>
+</svg>

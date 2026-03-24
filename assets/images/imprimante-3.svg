@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#eefef6"/>
+  <rect x="360" y="210" width="480" height="340" rx="28" fill="#fff" stroke="#dbe3ef" stroke-width="4"/>
+  <rect x="430" y="300" width="340" height="160" rx="14" fill="#f3f4f6"/>
+  <text x="600" y="150" text-anchor="middle" font-size="50" font-family="Arial, sans-serif" fill="#0b1220" font-weight="700">Detail Produit</text>
+  <text x="600" y="710" text-anchor="middle" font-size="34" font-family="Arial, sans-serif" fill="#5b6475">Glisse-depose une image JPG/PNG ici</text>
+</svg>

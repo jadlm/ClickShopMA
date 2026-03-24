@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr-MA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin produits | Printy Maroc</title>
+    <meta name="description" content="Admin local pour gerer produits, stock, prix, images et numero WhatsApp." />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-badge">MA</span>
+          <span>Printy Maroc</span>
+        </a>
+        <nav class="nav">
+          <a href="index.html">Accueil</a>
+          <a href="produit.html">Produit</a>
+          <a href="faq.html">FAQ</a>
+          <a href="avis.html">Avis</a>
+          <a href="admin.html" aria-current="page">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="adminApp">
+      <section class="section">
+        <div class="container split">
+          <div class="card white">
+            <h2>Parametres boutique</h2>
+            <div class="form" style="margin-top:10px">
+              <label>Numero WhatsApp (format 2126... sans +)
+                <input id="adminWhatsapp" placeholder="2126XXXXXXXX" />
+              </label>
+              <label>Heures support
+                <input id="adminHours" placeholder="09:00-22:00" />
+              </label>
+              <button id="saveSettingsBtn" class="btn btn-primary" type="button">Enregistrer parametres</button>
+            </div>
+            <div class="note">Ces donnees sont sauvegardees localement dans ton navigateur.</div>
+          </div>
+
+          <div class="card">
+            <h2>Produit rapide</h2>
+            <p>Ajoute des images dans <code>assets/images/</code> puis colle les chemins dans le champ "Images".</p>
+            <div class="badge-line">
+              <span class="badge green">Ajout produit</span>
+              <span class="badge">Prix & promo</span>
+              <span class="badge">Stock</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="card white">
+            <h2>Ajouter / modifier produit</h2>
+            <form id="adminForm" class="form" style="margin-top:12px">
+              <input type="hidden" id="adminId" />
+              <div class="row2">
+                <label>ID produit (unique, ex: mini-imprimante)
+                  <input id="pId" required />
+                </label>
+                <label>Nom complet
+                  <input id="pName" required />
+                </label>
+              </div>
+              <div class="row2">
+                <label>Nom court
+                  <input id="pShortName" required />
+                </label>
+                <label>Description courte
+                  <input id="pDescription" />
+                </label>
+              </div>
+              <div class="row2">
+                <label>Prix (DH)
+                  <input id="pPrice" type="number" min="0" required />
+                </label>
+                <label>Prix barre (DH)
+                  <input id="pCompare" type="number" min="0" />
+                </label>
+              </div>
+              <div class="row2">
+                <label>Label promo
+                  <input id="pOffer" placeholder="-35% promo" />
+                </label>
+                <label>Stock
+                  <input id="pStock" type="number" min="0" required />
+                </label>
+              </div>
+              <label>Images (une ligne par image)
+                <textarea id="pImages" placeholder="assets/images/ton-image-1.jpg&#10;assets/images/ton-image-2.jpg"></textarea>
+              </label>
+              <label style="display:flex; align-items:center; gap:8px; color:var(--text)">
+                <input id="pFeatured" type="checkbox" style="width:auto" />
+                Definir comme produit principal
+              </label>
+              <div class="cta-row">
+                <button id="saveBtn" class="btn btn-primary" type="submit">Ajouter produit</button>
+                <button id="resetBtn" class="btn btn-secondary" type="button">Vider formulaire</button>
+                <button id="restoreDefaultsBtn" class="btn btn-secondary" type="button">Restaurer defaut</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Produits existants</h2>
+          <div id="adminProductList" class="cards" style="margin-top:12px"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="card">
+            <h2>Export JSON (copie de sauvegarde)</h2>
+            <textarea id="rawExport" readonly></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div><strong>Printy Maroc</strong> - Admin local</div>
+      </div>
+    </footer>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
