@@ -63,6 +63,12 @@ function formatMAD(n){
 function qs(sel, root=document){ return root.querySelector(sel); }
 function qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
 
+function resolveSrc(src){
+  if(!src) return "";
+  try{ return new URL(src, window.location.href).href; }
+  catch{ return src; }
+}
+
 function deepClone(obj){
   return JSON.parse(JSON.stringify(obj));
 }
@@ -183,17 +189,18 @@ function renderGallery(product){
   const thumbs = qs("#galleryThumbs");
   if(!main || !thumbs || !Array.isArray(product.images) || !product.images.length) return;
 
-  main.src = product.images[0];
+  main.src = resolveSrc(product.images[0]);
   main.alt = product.shortName;
   thumbs.innerHTML = "";
   product.images.forEach((src, idx) => {
+    const resolved = resolveSrc(src);
     const b = document.createElement("button");
     b.type = "button";
     b.className = "thumb-btn";
     b.setAttribute("aria-label", `Image ${idx + 1}`);
-    b.innerHTML = `<img src="${src}" alt="${product.shortName} ${idx + 1}" />`;
+    b.innerHTML = `<img src="${resolved}" alt="${product.shortName} ${idx + 1}" />`;
     b.addEventListener("click", () => {
-      main.src = src;
+      main.src = resolved;
       qsa(".thumb-btn", thumbs).forEach((el)=>el.classList.remove("active"));
       b.classList.add("active");
     });
@@ -213,8 +220,9 @@ function renderProductList(){
     const stockClass = getStockClass(product.stock);
     const stockText = getStockLabel(product.stock);
     const disabled = product.stock <= 0 ? "disabled" : "";
-    const cover = product.images?.[0] || "";
+    const cover = resolveSrc(product.images?.[0] || "assets/images/imprimante-1.svg");
     card.innerHTML = `
+      <img class="product-cover" src="${cover}" alt="${product.shortName}" />
       <h3>${product.shortName}</h3>
       <p>${product.description}</p>
       <div class="pricebox" style="margin-top:8px">
